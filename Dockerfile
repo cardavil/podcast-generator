@@ -15,10 +15,10 @@ RUN apt-get update && apt-get install -y \
 
 # Upgrade pip
 # New
-Run python3 -m pip install --upgrade pip
+Run python3.10 -m pip install --upgrade pip
  
 # Install Python dependencies
-RUN pip3 install PyYAML
+RUN pip3.10 install PyYAML
 
 #copy the application files
 COPY feed.py /usr/bin/feed.py
@@ -29,4 +29,4 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Set the entrypoint script is executable
-entrypoint ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
