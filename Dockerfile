@@ -4,9 +4,14 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
     python3.10 \
     python3-pip \
-    git
-
+    git \
+    build-essential \       # new
+    libssl-dev \            # new
+    libffi-dev \            # new
+    python3-dev             # new
+ 
 # Install Python dependencies
+RUN pip3 install --upgrade pip      # new
 RUN pip3 install PyYAML
 
 #copy the application files
