@@ -9,11 +9,15 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libssl-dev \
     libffi-dev \
-    python3-dev
+    python3-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip
+# New
+Run python3 -m pip install --upgrade pip
  
 # Install Python dependencies
-# New 1 dependency
-RUN pip3 install --upgrade pip
 RUN pip3 install PyYAML
 
 #copy the application files
@@ -21,6 +25,7 @@ COPY feed.py /usr/bin/feed.py
 COPY entrypoint.sh /entrypoint.sh
 
 # Ensure the entrypoint script is executable
+# New
 RUN chmod +x /entrypoint.sh
 
 # Set the entrypoint script is executable
