@@ -1,17 +1,19 @@
 FROM ubuntu:latest
 
-# install system dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     python3.10 \
     python3-pip \
     git \
-    build-essential \       # new
-    libssl-dev \            # new
-    libffi-dev \            # new
-    python3-dev             # new
+# New 4 dependencies
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev
  
 # Install Python dependencies
-RUN pip3 install --upgrade pip      # new
+# New 1 dependency
+RUN pip3 install --upgrade pip
 RUN pip3 install PyYAML
 
 #copy the application files
